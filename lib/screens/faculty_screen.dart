@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:senior/app_router.dart';
 import 'package:senior/controllers/faculty_controller.dart';
+
 
 class FacultyScreen extends StatelessWidget {
   // Example list of faculties with image paths

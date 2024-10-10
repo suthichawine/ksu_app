@@ -80,8 +80,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 body:
                     "สำรวจโอกาสและประสบการณ์การเรียนรู้ที่ไม่มีที่สิ้นสุดกับเรา",
                 image: Padding(
-                  padding: const EdgeInsets.only(top: 70.0),
-                  child: _buildImage('ksu1.jpg', false, 230),
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: _buildImage('ksu.png', false, 230),
                 ),
                 decoration: pageDecoration,
               ),

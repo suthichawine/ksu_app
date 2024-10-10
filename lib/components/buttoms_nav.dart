@@ -13,8 +13,8 @@ class BottomsNav extends StatefulWidget {
 class _BottomsNavState extends State<BottomsNav> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-    UniversityScreen(),
     HomeScreen(),
+    UniversityScreen(),
     FacultyScreen(),
   ];
 

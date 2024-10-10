@@ -1,43 +1,27 @@
-class Faculty {
-  final String id;
-  final String faculty_name;
-  final String image;
-
-  Faculty({
-    required this.id,
-    required this.faculty_name,
-    required this.image,
-  });
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:senior/models/faculty_model.dart';
 
 class FacultyService {
-  // ตัวอย่างข้อมูลที่จำลอง
-  final List<Faculty> mockFaculties = [
-    Faculty(
-      id: '1',
-      faculty_name: 'Faculty of Engineering',
-      image: 'assets/images/faculty_of_engineering.jpg',
-    ),
-    Faculty(
-      id: '2',
-      faculty_name: 'Faculty of Science',
-      image: 'assets/images/faculty_of_science.jpg',
-    ),
-    Faculty(
-      id: '3',
-      faculty_name: 'Faculty of Arts',
-      image: 'assets/images/faculty_of_arts.jpg',
-    ),
-  ];
+  final CollectionReference faculty =
+      FirebaseFirestore.instance.collection('faculty');
+
+ 
 
   Future<List<Faculty>> getAllFaculties() async {
     try {
-      // ใช้ข้อมูลจำลองแทนการดึงข้อมูลจาก Firebase
-      await Future.delayed(Duration(seconds: 1)); // จำลองการหน่วงเวลา
-      return mockFaculties;
+      QuerySnapshot querySnapshot = await faculty.get();
+      List<Faculty> faculties = querySnapshot.docs.map((doc) {
+        return Faculty(
+          id: doc.id,
+          faculty_name: doc["faculty_name"],
+          image: doc["image"],
+        );
+      }).toList();
+      return faculties;
     } catch (e) {
       print("Error getting faculties: $e");
       return [];
     }
   }
 }
+
